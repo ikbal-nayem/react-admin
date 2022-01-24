@@ -1,40 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Drawer, IconButton, List } from "@mui/material";
-import {
-  AutoAwesomeMosaic,
-  ArrowBack as ArrowBackIcon,
-  Settings,
-  HomeRepairService
-} from "@mui/icons-material";
+import { ArrowBack as ArrowBackIcon } from "@mui/icons-material";
 import { useTheme } from "@mui/material";
 import classNames from "classnames";
 import useStyles from "./styles";
-import user_type from "util/user_type";
-
-// components
 import SidebarLink from "./components/SidebarLink/SidebarLink";
 
-// context
-import {useLayoutState, useLayoutDispatch, toggleSidebar} from "../../context/LayoutContext";
-import { useLocation } from "react-router-dom";
-
-
-const {HOUSEKEEPER} = user_type
-
-const structure = [
-  { label: "Dashboard", link: "/dashboard", icon: <AutoAwesomeMosaic />},
-  { label: "House Keeping", link: "/house-keeping", icon: <HomeRepairService />, show_to: [HOUSEKEEPER]},
-  { label: "Configuration", link: "/configuration", icon: <Settings />,
-    children: [
-      { label: "User", link: "/configuration/user"},
-    ]
-  }
-];
+import { useLayoutState, useLayoutDispatch, toggleSidebar } from "../../context/LayoutContext";
+import structure from './nav-links';
 
 
 
 
-const Sidebar = ()=>{
+const Sidebar = () => {
   var classes = useStyles();
   var theme = useTheme();
   const location = useLocation()
@@ -47,7 +26,7 @@ const Sidebar = ()=>{
   var [isPermanent, setPermanent] = useState(true);
 
 
-  const handleWindowWidthChange = React.useCallback(()=>{
+  const handleWindowWidthChange = React.useCallback(() => {
     var windowWidth = window.innerWidth;
     var breakpointWidth = theme.breakpoints.values.md;
     var isSmallScreen = windowWidth < breakpointWidth;
@@ -59,14 +38,14 @@ const Sidebar = ()=>{
     }
   }, [isPermanent, theme])
 
-  useEffect(function() {
+  useEffect(function () {
     window.addEventListener("resize", handleWindowWidthChange);
     handleWindowWidthChange();
     return function cleanup() {
       window.removeEventListener("resize", handleWindowWidthChange);
     };
   }, [handleWindowWidthChange]);
-  
+
 
   return (
     <Drawer
