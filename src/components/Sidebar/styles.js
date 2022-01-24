@@ -14,6 +14,7 @@ export default makeStyles(theme => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: "nowrap",
+    backgroundColor: '#fff !important',
     boxShadow: '-1px 0px 8px 0px #8b8b8b !important'
   },
   drawerOpen: {

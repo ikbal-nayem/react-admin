@@ -1,5 +1,7 @@
 import { makeStyles } from '@mui/styles';
 
+const drawerWidth = 240;
+
 export default makeStyles(theme => ({
   root: {
     display: "flex",
@@ -9,11 +11,11 @@ export default makeStyles(theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(2),
-    width: `calc(100vw - 240px)`,
+    width: `calc(100vw - ${drawerWidth}px)`,
     minHeight: "100vh",
   },
   contentShift: {
-    width: `calc(100vw - ${240 + theme.spacing(6)}px)`,
+    width: `calc(100vw - ${drawerWidth}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
