@@ -5,7 +5,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from '@mui/material/CssBaseline';
 
 import Themes from "./themes";
-import "ka-table/style.css"
 import "./styles/bootstrap.css";
 import "./styles/_global.css";
 import "./styles/animation/animation.min.css";
