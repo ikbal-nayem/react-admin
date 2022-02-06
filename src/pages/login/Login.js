@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useNavigate} from 'react-router-dom';
 import {
   Grid,
   CircularProgress,
@@ -7,10 +8,11 @@ import {
   Fade,
 } from "@mui/material";
 import useStyles from "./styles";
-import {ReactComponent as Logo} from "./logo.svg";
+import {ReactComponent as Logo} from "assets/svg/logo.svg";
 import { useUserDispatch, loginUser } from "../../context/UserContext";
 
 const Login = React.memo((props)=>{
+  const navigate = useNavigate()
   var classes = useStyles();
   var userDispatch = useUserDispatch();
 
@@ -24,11 +26,19 @@ const Login = React.memo((props)=>{
     <Grid container className={classes.container}>
       <div className={classes.logotypeContainer}>
         <Logo className={`${classes.logotypeImage} animate__animated animate__fadeIn`}/>
-        <h2 className={`${classes.logotypeText} m-0 animate__animated animate__bounceIn animate__delay-1s`}>Shop Admin</h2>
+        <h2 className={`${classes.logotypeText} m-0 animate__animated animate__bounceIn animate__delay-1s`}>Admin Panel</h2>
       </div>
       <div className={classes.formContainer}>
         <div className={`${classes.form} animate__animated animate__rollIn`}>
-          <React.Fragment>
+          <form onSubmit={() =>
+                    loginUser(
+                      userDispatch,
+                      username,
+                      password,
+                      navigate,
+                      setIsLoading,
+                      setError,
+                    )}>
             <h2 className={classes.greeting}>Admin Login</h2>
             <hr/>
             <TextField
@@ -60,14 +70,6 @@ const Login = React.memo((props)=>{
               fullWidth
               required
               error={error}
-              onKeyPress={(e)=>e.key==="Enter" && username && password && loginUser(
-                userDispatch,
-                username,
-                password,
-                props.history,
-                setIsLoading,
-                setError,
-              )}
             />
             <Fade in={error}>
               <strong className={classes.errorMessage}>
@@ -80,16 +82,7 @@ const Login = React.memo((props)=>{
               ) : (
                 <Button 
                   disabled={username.length === 0 || password.length === 0}
-                  onClick={() =>
-                    loginUser(
-                      userDispatch,
-                      username,
-                      password,
-                      props.history,
-                      setIsLoading,
-                      setError,
-                    )
-                  }
+                  type="submit"
                   className="w-50"
                   variant="contained"
                   color="primary"
@@ -99,10 +92,10 @@ const Login = React.memo((props)=>{
                 </Button>
               )}
             </div>
-          </React.Fragment>
+          </form>
         </div>
         <small className={classes.copyright}>
-          Nice Power and IT Solution Ltd.  - {new Date().getFullYear()}
+          All rights are reserved  - {new Date().getFullYear()}
         </small>
       </div>
     </Grid>

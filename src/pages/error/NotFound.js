@@ -2,7 +2,7 @@ import React from "react";
 import {useNavigate} from 'react-router-dom';
 import { Button } from "@mui/material";
 import { ArrowBack } from '@mui/icons-material';
-import {ReactComponent as Logo404} from "images/svg/404.svg";
+import {ReactComponent as Logo404} from "assets/svg/404.svg";
 
 export default function NotFound() {
   const navigate = useNavigate()

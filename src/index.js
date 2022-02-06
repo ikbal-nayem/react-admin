@@ -6,8 +6,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import Themes from "./themes";
 import "./styles/bootstrap.css";
+import './styles/ka-style.css';
 import "./styles/_global.css";
-import "./styles/animation/animation.min.css";
+
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import { LayoutProvider } from "./context/LayoutContext";

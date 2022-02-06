@@ -2,8 +2,8 @@ import React from "react";
 import {Route, Routes, Navigate, useLocation} from "react-router-dom";
 import classnames from "classnames";
 import useStyles from "./styles";
-import Header from "../Header";
-import Sidebar from "../Sidebar";
+import Header from "../Header/Header";
+import Sidebar from "../Sidebar/Sidebar";
 import { useLayoutState } from "../../context/LayoutContext";
 import asyncComponent from '../../util/asyncComponent';
 
@@ -22,7 +22,7 @@ const AppRoutes = React.memo(()=>{
   if(pathname === '/')
     return <Navigate to="/dashboard"/>
 
-    return(
+  return(
     <Routes>
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path="/configuration/*" element={<Configuration/>}/>

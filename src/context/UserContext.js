@@ -89,7 +89,7 @@ const fakeUserInfo = ()=>{
 }
 
 
-function loginUser(dispatch, username, password, history, setIsLoading, setError) {
+function loginUser(dispatch, username, password, navigate, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
 
@@ -105,10 +105,10 @@ function loginUser(dispatch, username, password, history, setIsLoading, setError
               if(user_resp.success){
                 loginSuccess(dispatch, user_resp)
                 setError(false)
-                history.push('/')
+                navigate('/')
               } else {
                 cogoToast.error('Error occurred while getting user information')
-                signOut(dispatch, history)
+                signOut(dispatch, navigate)
               }
             })
         } else cogoToast.error('Sorry! Something went wrong')

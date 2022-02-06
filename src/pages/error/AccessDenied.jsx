@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { ArrowBack } from '@mui/icons-material';
-import logo from "images/svg/access_denied.svg";
+import logo from "assets/svg/access_denied.svg";
 
 export default function AccessDenied({history}) {
   return (
